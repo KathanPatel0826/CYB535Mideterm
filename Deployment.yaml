@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: my-app
+        app: helloworld-app
     spec:
       containers:
         - name: my-container
@@ -27,10 +27,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: helloworld-app-service
 spec:
   selector:
-    app: my-app
+    app: helloworld-app
   ports:
     - protocol: TCP
       port: 80      # External port
