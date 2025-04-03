@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: kevinpatel26/your-image:latest  # Replace with your actual Docker image
+          ports:
+            - containerPort: 8080  # Change if your app runs on a different port
+          env:
+            - name: ENV_VAR
+              value: "production"  # Example environment variable
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80      # External port
+      targetPort: 8080  # Match container port
+  type: LoadBalancer  # Change to ClusterIP or NodePort if needed
