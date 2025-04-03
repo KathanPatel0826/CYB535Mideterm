@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: helloworld-app
   labels:
-    app: my-app
+    app: helloworld-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: helloworld-app
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: my-container
-          image: kevinpatel26/your-image:latest  # Replace with your actual Docker image
+          image: kevinpatel26/helloworld:latest  # Replace with your actual Docker image
           ports:
             - containerPort: 8080  # Change if your app runs on a different port
           env:
